@@ -1,6 +1,11 @@
 let currentSequence = [];
 let currentAnswer = '';
 let selectedCode = null;
+let isDoubleTransform = false;
+let currentFirstCode = '';
+let currentSecondCode = '';
+let selectedFirstCode = null;
+let selectedSecondCode = null;
 
 function shuffleArray(array) {
     const newArray = [...array];
@@ -24,6 +29,23 @@ function generateDistinctCodes() {
     return Array.from(codes);
 }
 
+function toggleGameMode() {
+    isDoubleTransform = !isDoubleTransform;
+    const button = document.querySelector('.mode-toggle');
+    button.textContent = isDoubleTransform ? 
+        'Switch to Single Transform Mode' : 
+        'Switch to Double Transform Mode';
+    document.querySelector('.game-area').classList.toggle('double-transform');
+    document.querySelector('.codes').classList.toggle('double-transform');
+    startNewGame();
+}
+
+function generateDoubleTransformCodes() {
+    const firstCodes = generateDistinctCodes();
+    const secondCodes = generateDistinctCodes();
+    return { firstCodes, secondCodes };
+}
+
 function displayShapes() {
     const inputShapes = document.querySelector('.input-shapes');
     const outputShapes = document.querySelector('.output-shapes');
@@ -36,7 +58,8 @@ function displayShapes() {
     submitButton.disabled = true;
 
     currentSequence = shuffleArray(shapes);
-
+    
+    // Display input shapes
     currentSequence.forEach(shape => {
         const div = document.createElement('div');
         div.className = 'shape';
@@ -44,25 +67,66 @@ function displayShapes() {
         inputShapes.appendChild(div);
     });
 
-    const codes = generateDistinctCodes();
-    currentAnswer = codes[Math.floor(Math.random() * codes.length)];
-    const shuffledCodes = shuffleArray(codes);
-    
-    shuffledCodes.forEach(code => {
-        const button = document.createElement('button');
-        button.className = 'code-button';
-        button.textContent = code;
-        button.onclick = () => selectCode(code, button);
-        codesContainer.appendChild(button);
-    });
-
-    const outputSequence = applyCode(currentSequence, currentAnswer);
-    outputSequence.forEach(shape => {
-        const div = document.createElement('div');
-        div.className = 'shape';
-        div.innerHTML = shape.html;
-        outputShapes.appendChild(div);
-    });
+    if (isDoubleTransform) {
+        // Generate first code (shown at top, not selectable)
+        currentFirstCode = generateRandomCode();
+        
+        // Generate three options for second code
+        const secondCodes = generateDistinctCodes();
+        currentSecondCode = secondCodes[Math.floor(Math.random() * secondCodes.length)];
+        
+        // Display first code (single, shown at top, not interactive)
+        const firstCodeDisplay = document.createElement('div');
+        firstCodeDisplay.className = 'first-code-display';
+        firstCodeDisplay.textContent = currentFirstCode;
+        codesContainer.appendChild(firstCodeDisplay);
+        
+        // Calculate intermediate result (but don't display it)
+        const intermediateSequence = applyCode(currentSequence, currentFirstCode);
+        
+        // Display second code options (these are selectable)
+        const secondCodeGroup = document.createElement('div');
+        secondCodeGroup.className = 'second-code-options';
+        
+        shuffleArray(secondCodes).forEach(code => {
+            const button = document.createElement('button');
+            button.className = 'code-button';
+            button.textContent = code;
+            button.onclick = () => selectCode(code, button);
+            secondCodeGroup.appendChild(button);
+        });
+        
+        codesContainer.appendChild(secondCodeGroup);
+        
+        // Show final result
+        const finalSequence = applyCode(intermediateSequence, currentSecondCode);
+        finalSequence.forEach(shape => {
+            const div = document.createElement('div');
+            div.className = 'shape';
+            div.innerHTML = shape.html;
+            outputShapes.appendChild(div);
+        });
+    } else {
+        // Original single transform logic
+        const codes = generateDistinctCodes();
+        currentAnswer = codes[Math.floor(Math.random() * codes.length)];
+        
+        shuffleArray(codes).forEach(code => {
+            const button = document.createElement('button');
+            button.className = 'code-button';
+            button.textContent = code;
+            button.onclick = () => selectCode(code, button);
+            codesContainer.appendChild(button);
+        });
+        
+        const outputSequence = applyCode(currentSequence, currentAnswer);
+        outputSequence.forEach(shape => {
+            const div = document.createElement('div');
+            div.className = 'shape';
+            div.innerHTML = shape.html;
+            outputShapes.appendChild(div);
+        });
+    }
 }
 
 function selectCode(code, button) {
@@ -90,7 +154,9 @@ function checkAnswer() {
         return;
     }
     
-    if (selectedCode === currentAnswer) {
+    const correctCode = isDoubleTransform ? currentSecondCode : currentAnswer;
+    
+    if (selectedCode === correctCode) {
         feedback.textContent = 'Correct! Generating new puzzle...';
         feedback.className = 'feedback success';
         document.querySelector('.submit-button').disabled = true;
@@ -118,5 +184,6 @@ document.addEventListener('keypress', (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.submit-button').addEventListener('click', checkAnswer);
+    document.querySelector('.mode-toggle').addEventListener('click', toggleGameMode);
     startNewGame();
 }); 
