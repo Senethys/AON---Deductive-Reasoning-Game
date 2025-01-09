@@ -1,8 +1,23 @@
-# Deductive Reasoning Game
+# Assessment Practice Platform
 
-A browser-based puzzle game where players decode shape transformation patterns using deductive reasoning skills.
+An interactive web platform for practicing various types of assessment tests commonly used in recruitment processes. Currently featuring a deductive reasoning challenge with more test types coming soon. 
 
-## How to Play
+This are tests based on AON Assessments https://assessment.aon.com/en-us/prepare-your-assessment
+
+## Available Tests
+
+### Active Tests
+- **Deductive Reasoning (switchChallenge)** - Practice identifying patterns and drawing logical conclusions from given information.
+
+### Coming Soon
+- **Numerical Reasoning** - Practice analyzing and interpreting numerical data in business contexts.
+- **Verbal Reasoning** - Practice evaluating written statements and arguments.
+- **Understanding of Basic Instructions (verbal instruct)** - Practice following and interpreting written instructions accurately.
+- **Inductive Reasoning (ix)** - Practice identifying patterns and making predictions based on given information.
+- **Deductive Reasoning (gapChallenge)** - Practice identifying missing elements in logical sequences.
+- **Numeracy (digitChallenge)** - Practice basic numerical operations and digit-based problem solving.
+
+## Deductive Reasoning Game Instructions
 
 1. Look at the input shapes (top row)
 2. Look at the output shapes (bottom row)
@@ -10,7 +25,6 @@ A browser-based puzzle game where players decode shape transformation patterns u
 4. Click Submit or press Enter to check your answer
 
 ### Understanding Codes
-
 Each code is a 4-digit number (like "2143") that shows how shapes are rearranged:
 - First digit tells which input shape becomes the first output shape
 - Second digit tells which input shape becomes the second output shape
@@ -26,22 +40,15 @@ Example: Code "2143" means:
 
 1. Clone this repository
 2. Open `index.html` in your browser
-3. Start playing!
+3. Start practicing!
 
 ## Files
 
-- `index.html` - Game structure
-- `styles.css` - Game styling
-- `game.js` - Game logic
+- `index.html` - Main landing page with test selection
+- `deductive.html` - Deductive reasoning game
+- `styles.css` - Styling for all pages
+- `game.js` - Game logic for deductive reasoning test
 - `shapes.js` - Shape configurations
-
-## Features
-
-- Dynamic shape sequences
-- Multiple-choice codes
-- Keyboard support (Enter key)
-- Immediate feedback
-- Responsive design
 
 ## Browser Support
 
@@ -50,6 +57,10 @@ Works in all modern browsers:
 - Firefox
 - Safari
 - Edge
+
+## Contributing
+
+Feel free to submit issues and enhancement requests!
 
 ## License
 
