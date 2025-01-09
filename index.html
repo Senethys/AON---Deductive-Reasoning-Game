@@ -1,28 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Deductive Reasoning Assessment</title>
+    <title>Assessment Practice Tests</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h2>Deductive Reasoning Assessment</h2>
-        <div class="controls">
-            <button class="mode-toggle">Switch to Double Transform Mode</button>
-        </div>
-        <p class="instructions">Select the code that transforms the input shapes into the output shapes, then click Submit or press Enter.</p>
-        
-        <div class="game-area">
-            <div class="shapes-row input-shapes"></div>
-            <div class="connector"></div>
-            <div class="codes"></div>
-            <div class="connector"></div>
-            <div class="shapes-row output-shapes"></div>
-            <button class="submit-button" disabled>Submit</button>
-            <div class="feedback"></div>
+        <header class="main-header">
+            <h1>Assessment Practice Tests</h1>
+            <p class="header-description">Prepare for your upcoming assessment by practicing with our interactive tests</p>
+        </header>
+
+        <div class="tests-grid">
+            <div class="test-card coming-soon">
+                <div class="test-icon">
+                    <img src="assets/numerical-icon.svg" alt="Numerical Reasoning">
+                </div>
+                <h2>Numerical Reasoning</h2>
+                <p>Practice analyzing and interpreting numerical data in business contexts.</p>
+                <button class="start-test-btn" disabled>Coming Soon</button>
+            </div>
+
+            <div class="test-card coming-soon">
+                <div class="test-icon">
+                    <img src="assets/verbal-icon.svg" alt="Verbal Reasoning">
+                </div>
+                <h2>Verbal Reasoning</h2>
+                <p>Practice evaluating written statements and arguments.</p>
+                <button class="start-test-btn" disabled>Coming Soon</button>
+            </div>
+
+            <div class="test-card coming-soon">
+                <div class="test-icon">
+                    <img src="assets/instructions-icon.svg" alt="Basic Instructions">
+                </div>
+                <h2>Understanding of Basic Instructions (verbal intruct) </h2>
+                <p>Practice following and interpreting written instructions accurately.</p>
+                <button class="start-test-btn" disabled>Coming Soon</button>
+            </div>
+
+            <div class="test-card coming-soon">
+                <div class="test-icon">
+                    <img src="assets/inductive-icon.svg" alt="Inductive Reasoning">
+                </div>
+                <h2>Inductive Reasoning (ix)</h2>
+                <p>Practice identifying patterns and making predictions based on given information.</p>
+                <button class="start-test-btn" disabled>Coming Soon</button>
+            </div>
+
+            <div class="test-card">
+                <div class="test-icon">
+                    <img src="assets/deductive-icon.svg" alt="Deductive Reasoning">
+                </div>
+                <h2>Deductive Reasoning (switchChallenge)</h2>
+                <p>Practice identifying patterns and drawing logical conclusions from given information.</p>
+                <a href="deductive.html" class="start-test-btn">Start Practice Test</a>
+            </div>
+
+            <div class="test-card coming-soon">
+                <div class="test-icon">
+                    <img src="assets/deductive-gap-icon.svg" alt="Deductive Gap">
+                </div>
+                <h2>Deductive Reasoning (gapChallenge)</h2>
+                <p>Practice identifying missing elements in logical sequences.</p>
+                <button class="start-test-btn" disabled>Coming Soon</button>
+            </div>
+
+            <div class="test-card coming-soon">
+                <div class="test-icon">
+                    <img src="assets/numeracy-icon.svg" alt="Numeracy">
+                </div>
+                <h2>Numeracy (digitChallenge)</h2>
+                <p>Practice basic numerical operations and digit-based problem solving.</p>
+                <button class="start-test-btn" disabled>Coming Soon</button>
+            </div>
         </div>
     </div>
-    <script src="shapes.js"></script>
-    <script src="game.js"></script>
 </body>
 </html>

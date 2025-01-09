@@ -1,8 +1,12 @@
 .container {
-    max-width: 600px;
+    max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
     font-family: system-ui, -apple-system, sans-serif;
+}
+
+.container.deductive-container {
+    max-width: 600px;
 }
 
 .game-area {
@@ -209,5 +213,97 @@
     margin: 20px 0;
     padding-top: 20px;
     border-top: 2px dashed #ccc;
+}
+
+.main-header {
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.header-description {
+    color: #666;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 1rem auto;
+}
+
+.tests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.test-card {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.test-card:hover {
+    transform: translateY(-5px);
+}
+
+.test-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: #f5f5f5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.test-icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.test-card h2 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.test-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.start-test-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s ease;
+}
+
+.start-test-btn:hover {
+    background: #0056b3;
+}
+
+.coming-soon {
+    opacity: 0.7;
+}
+
+.coming-soon .start-test-btn {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.coming-soon .start-test-btn:hover {
+    background: #ccc;
 }
   
